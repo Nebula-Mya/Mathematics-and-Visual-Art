@@ -1,0 +1,16 @@
+{
+    "github.codespaces.defaultExtensions": [
+        "ms-vscode.atom-keybindings",
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cpptools-themes",
+        "twxs.cmake",
+        "ms-vscode.cmake-tools",
+        "mxschmitt.postscript",
+        "ahnafnafee.postscript-preview",
+        "ms-python.vscode-pylance",
+        "ms-python.python",
+        "GitHub.codespaces",
+        "GitHub.vscode-pull-request-github"
+    ]
+}
