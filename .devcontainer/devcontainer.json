@@ -18,8 +18,8 @@
         "tomoki1207.pdf",
         "GitHub.copilot-chat",
         "GitHub.copilot"
-      ],
-      "postStartCommand": "apt-get update && apt-get install -y ghostscript"
+      ]
     }
-  }
+  },
+  "postStartCommand": "apt-get update && apt-get install -y ghostscript"
 }
