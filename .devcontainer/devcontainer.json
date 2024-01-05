@@ -2,29 +2,8 @@
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
   },
-  "settings": {
-    "workbench.colorTheme": "Default Dark Modern",
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "git.enableSmartCommit": true,
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false
-  },
-  "extensions": [
-        "ms-vscode.cpptools",
-        "ms-vscode.cpptools-extension-pack",
-        "ms-vscode.cpptools-themes",
-        "twxs.cmake",
-        "ms-vscode.cmake-tools",
-        "mxschmitt.postscript",
-        "ms-python.vscode-pylance",
-        "ms-python.python",
-        "GitHub.codespaces",
-        "GitHub.vscode-pull-request-github",
-        "tomoki1207.pdf",
-        "GitHub.copilot-chat",
-        "GitHub.copilot"
-    ],
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y ghostscript",
-  "postCreateCommand": "mkdir -p /root/.vscode-server/data/Machine && cp /workspaces/your-repo/.devcontainer/keybindings.json /root/.vscode-server/data/Machine/"
+  "postCreateCommand": {
+    "sudo apt-get update && sudo apt-get install -y ghostscript":
+    "mkdir -p /root/.vscode-server/data/Machine && cp /workspaces/your-repo/.devcontainer/keybindings.json /root/.vscode-server/data/Machine/"
+  }
 }
