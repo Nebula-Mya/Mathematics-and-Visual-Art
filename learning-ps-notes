@@ -55,3 +55,4 @@
     % grestore is a function that restores a path from gsave for re-use
 % .eps files are good for embedding in other documents, while .ps files are good for stand-alone applications
 % you can define vars to be newpaths, and then use them as such
+% d"function" is delta of "function"
