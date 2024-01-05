@@ -1,0 +1,43 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 612 612
+
+72 dup scale
+4.25 4.25 translate
+
+1 72 div setlinewidth
+1 setlinejoin
+1 setlinecap
+
+% PostScript code for drawing a Fibonacci spiral
+
+/n 300 def         % number of points
+/phi 137.507 def   % golden angle
+/dr 0.01 def       % delta r (change in radius)
+/dotr 0.05 def     % radius of dot
+/ddotr 0.0005 def  % delta radius of dot
+
+/angle 0 def
+
+/r 1 def
+
+1 1 n {
+  /i exch def   
+
+  /x angle cos r mul def      % compute x
+  /y angle sin r mul def      % compute y  
+
+  newpath
+  x y dotr 0 360 arc          % draw a dot at (x,y)
+  fill
+
+  /angle angle phi add def    % add phi to the angle
+  /r r dr add def             % add dr to r
+  /dotr dotr ddotr add def    % add ddotr to dotr
+
+} for
+
+showpage
+
+%EOF
+
+
