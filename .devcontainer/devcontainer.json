@@ -19,7 +19,7 @@
         "GitHub.copilot-chat",
         "GitHub.copilot"
       ],
-      "postStartCommand": "sudo apt-get update && sudo apt-get install -y ghostscript"
+      "postStartCommand": "apt-get update && apt-get install -y ghostscript"
     }
   }
 }
