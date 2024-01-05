@@ -11,6 +11,8 @@
         "ms-python.vscode-pylance",
         "ms-python.python",
         "GitHub.codespaces",
-        "GitHub.vscode-pull-request-github"
+        "GitHub.vscode-pull-request-github",
+        "GitHub.copilot-chat",
+        "GitHub.copilot"
     ]
 }
