@@ -1,0 +1,54 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 100 100
+
+50 50 translate
+
+0.0 0.0 1.0 setrgbcolor
+
+0.0 setlinewidth
+1 setlinejoin
+1 setlinecap
+
+/unit 4 def
+/U{0 unit rlineto}def
+/D{0 unit neg rlineto}def
+/N{30 cos unit mul 30 sin unit mul rlineto}def
+/S{210 cos unit mul 210 sin unit mul rlineto}def
+/E{330 cos unit mul 330 sin unit mul rlineto}def
+/W{150 cos unit mul 150 sin unit mul rlineto}def
+
+
+/design{
+newpath
+0 unit moveto
+E D D D N N U U U W W W S S W W N N N N 
+E E E E N N W W W W W W S S S S S S S D 
+D D D D D D E E E E E E D D W W W W W W 
+W W U U U U U U U U U N N N N N N N N N 
+E E E E E E E E E D D D D D D D D D S S 
+S S S S S S U U N N N N N N U U U U U U 
+S S D D D D S S S S S W W W W W U U U U 
+E E D D E E U U U
+closepath}def
+
+/hex{
+newpath
+0 unit 11 mul moveto
+S S S S S S S S S S S
+D D D D D D D D D D D
+E E E E E E E E E E E
+N N N N N N N N N N N
+U U U U U U U U U U U
+W W W W W W W W W W
+closepath}def
+
+design 
+stroke
+
+hex
+stroke
+
+showpage
+
+%EOF 
+
