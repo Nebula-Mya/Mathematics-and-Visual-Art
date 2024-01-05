@@ -1,5 +1,5 @@
 1/4/2024:
-    ~2:30 - 3:50
+    14:30 - 15:50
         setting up code suite for postscript
         setting up OpenSCAD
         Light research on Vera Molnar
@@ -9,3 +9,9 @@
 1/5/2024:
     9:13
         setup copilot, added to the repository's codespace
+    13:15 - 18:40:
+        taking notes on postscript
+        remaking examples
+        imported examples
+        re-did ps/esp viewing to allow ipad to do it
+        a whole lot of configuring devContainer.json
