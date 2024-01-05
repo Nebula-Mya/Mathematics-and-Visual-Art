@@ -1,6 +1,5 @@
 {
     "github.codespaces.defaultExtensions": [
-        "ms-vscode.atom-keybindings",
         "ms-vscode.cpptools",
         "ms-vscode.cpptools-extension-pack",
         "ms-vscode.cpptools-themes",
