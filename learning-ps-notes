@@ -1,0 +1,57 @@
+% comment with percent symbols
+
+% Example 1a: rotated square
+    %!PS-Adobe-3.0 EPSF-3.0
+    %%BoundingBox: 0 0 100 100
+
+    50 50 translate
+
+    0.0 setgray
+
+    1 setlinejoin
+    1 setlinecap
+
+    newpath
+        30 0 moveto
+        0 30 lineto
+        -30 0 lineto
+        0 -30 lineto
+    closepath
+
+    stroke
+
+    showpage
+
+    %E0F
+% Example 1b: rotated square filled red
+    %!PS-Adobe-3.0 EPSF-3.0
+    %%BoundingBox: 0 0 100 100
+
+    50 50 translate
+
+    1.0 0.0 0.0 setrgbcolor
+
+    1 setlinejoin
+    1 setlinecap
+
+    newpath
+        30 0 moveto
+        0 30 lineto
+        -30 0 lineto
+        0 -30 lineto
+    closepath
+
+    fill
+    
+    showpage
+
+    %E0F
+
+% UDLR.eps stuff: 
+    % defining (a var) is /"name" "value" def
+    % drawing functions with unit: "(neg) x amount" "(neg) y amount" "function"
+        % "y amount" or "x amount" can be replaced with a unit var
+    % gsave is a function that saves a path for re-use
+    % grestore is a function that restores a path from gsave for re-use
+% .eps files are good for embedding in other documents, while .ps files are good for stand-alone applications
+% you can define vars to be newpaths, and then use them as such
