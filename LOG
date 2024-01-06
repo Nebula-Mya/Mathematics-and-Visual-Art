@@ -17,8 +17,9 @@
         made keybind so "ctrl+alt+p" while in postscript file (.ps or .eps) will automatically create a pdf of the code
         a whole lot of configuring devContainer.json
 1/6/2024:
-    15:00 - ??:
+    15:00 - 18:00:
         making dragon curve in postscript
         learning l-systems
             omg this might be what I focus on
         imported l-system examples to study
+        to do: read this paper on l-systems in postscript; "https://www.cstug.cz/bulletin/pdf/2012-1.pdf" (english starts p11)
