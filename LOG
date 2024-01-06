@@ -16,3 +16,6 @@
         re-did ps/esp viewing to allow ipad to do it
         made keybind so "ctrl+alt+p" while in postscript file (.ps or .eps) will automatically create a pdf of the code
         a whole lot of configuring devContainer.json
+1/6/2024:
+    15:00 - ??:
+        making dragon curve in postscript
