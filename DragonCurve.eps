@@ -1,21 +1,72 @@
 %!PS-Adobe-3.0 EPSF-3.0
-%%BoundingBox: 0 0 100 100
+% original idea before l-systems, it was a mess
+    % %%BoundingBox: 0 0 100 100
 
-50 50 translate
+    % 0.0 setgray
 
-0.0 setgray
+    % 1 setlinejoin
+    % 1 setlinecap
 
-0 setlinejoin
-0 setlinecap
+    % newpath
+    %     60 40 moveto
+    % currentpoint /y exch def /x exch def
 
-newpath
-    75 75 moveto
-    -5 0 rlineto
-    75 75 lineto
-closepath
+    % /k {
+    %     0 5 rlineto
+    % } def
 
-stroke
+    % 0 -90 -90 {
+    %     newpath
+    %         gsave
 
-showpage
+    %         x y moveto
 
-%EOF
+    %         rotate
+            
+    %         k
+
+    %         %find way to make whole path (reversed?) k
+            
+    %         currentpoint /y exch def /x exch def
+    %     stroke
+
+    %     grestore
+    % } for
+
+    % showpage
+
+    % %EOF
+% l-system:
+    /N 7 def
+
+    /X {
+    dup 0 ne
+    {1 sub 4 {dup} repeat - F X + + F Y -}
+    if pop
+    } def
+
+    /Y {
+    dup 0 ne
+    {1 sub 4 {dup} repeat + F X - - F Y +}
+    if pop
+    } def
+
+    /F {
+    0 eq { 10 0 rlineto } if 
+    } bind def
+
+    /- { -45 rotate } bind def
+
+    /+ { 45 rotate } bind def
+
+    1 setlinejoin
+    1 setlinecap
+
+    newpath
+    220 180 moveto
+    50 N { 2 sqrt div } repeat dup scale
+    90 rotate
+    N X
+    stroke
+
+    showpage
