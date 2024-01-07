@@ -1,0 +1,51 @@
+%!PS
+
+% Order
+/N 1 def
+
+% Equation: X -> +Y++F+XFX+F--Y
+/X {
+    dup 0 ne
+    {1 sub 7 {dup} repeat + Y + + F + X F X + F - - Y}
+    if pop
+} def
+
+% Equation: Y -> -XF+Y++F++Y+FX
+/Y {
+    dup 0 ne
+    {1 sub 7 {dup} repeat - X F + Y + + F + + Y + F X}
+    if pop
+} def
+
+% Equation: F -> λ
+/F {
+    0 eq {10 0 rlineto} if
+} bind def
+
+% Rotate: - -> 90° clockwise
+/- {
+    -90 rotate
+} bind def
+
+% Rotate: + -> 90° counter-clockwise
+/+ {
+    90 rotate
+} bind def
+
+% Cleaner lines
+1 setlinejoin
+1 setlinecap
+
+% Drawing
+newpath
+    % Move to origin (need to fine tune this)
+    220 180 moveto
+
+    % Scale lines down with each iteration to constrain final size
+    50 N {2 sqrt div} repeat dup scale
+
+    % Push N onto stack, call X
+    N X
+stroke
+
+showpage
