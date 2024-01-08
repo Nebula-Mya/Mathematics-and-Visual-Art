@@ -2,7 +2,7 @@
 
 
 
-## 1/4/2024:  
+## 1/4/2024  
 14:30 - 15:50  
 > setting up code suite for postscript
 > 
@@ -16,7 +16,7 @@
 >  
 > Parquet Deformations look SUPER interesting tbh  
         
-## 1/5/2024:  
+## 1/5/2024  
 9:13  
 > setup copilot, added to the repository's codespace
 
@@ -33,7 +33,7 @@
 > 
 > a whole lot of configuring devContainer.json
         
-## 1/6/2024:  
+## 1/6/2024  
 15:00 - 18:00  
 > making dragon curve in postscript
 >  
@@ -47,7 +47,7 @@
 >
 > to do: read [this paper](https://www.cstug.cz/bulletin/pdf/2012-1.pdf) on l-systems in postscript (english starts p11)
           
-## 1/7/2024:  
+## 1/7/2024  
 13:20 - 14:30  
 > figuring out how exactly the formulas for l-systems work via dragon curve
 > 
@@ -67,6 +67,6 @@
 22:10  
 > i think ill use ¿? instead of BE for l-systems' [] (option+shift+? or RightAlt+? to get ¿)
   
-## 1/8/2024:  
+## 1/8/2024  
 14:50  
 > i think ive decided on my focus; mathematically defined organic/natural shapes and structures, especially using l-systems and the golden ratio
