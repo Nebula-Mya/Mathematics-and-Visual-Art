@@ -1,19 +1,22 @@
 %!PS
 
-% Order
-/N 1 def
+% Binding Box
+%%BoundingBox: 0 0 50 50
 
-% Equation: X -> +Y++F+XFX+F--Y
+% Order
+/N 2 def
+
+% Equation: X -> -YF+XFX+FY- (down right up)
 /X {
     dup 0 ne
-    {1 sub 7 {dup} repeat + Y + + F + X F X + F - - Y}
+    {1 sub 7 {dup} repeat - Y F + X F X + F Y -}
     if pop
 } def
 
-% Equation: Y -> -XF+Y++F++Y+FX
+% Equation: Y -> +XF-YFY-FX+ (up right down)
 /Y {
     dup 0 ne
-    {1 sub 7 {dup} repeat - X F + Y + + F + + Y + F X}
+    {1 sub 7 {dup} repeat + X F - Y F Y - F X +}
     if pop
 } def
 
@@ -39,10 +42,10 @@
 % Drawing
 newpath
     % Move to origin (need to fine tune this)
-    220 180 moveto
+    130 550 moveto
 
     % Scale lines down with each iteration to constrain final size
-    50 N {2 sqrt div} repeat dup scale
+    35 N 1 sub {2 div} repeat dup scale
 
     % Push N onto stack, call X
     N X
