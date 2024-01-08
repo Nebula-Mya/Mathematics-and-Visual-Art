@@ -1,0 +1,57 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 100 100
+
+50 50 translate
+
+1 setlinejoin
+1 setlinecap
+
+% PostScript code for drawing an epicycloid
+% (Google "Wolfram MathWorld epicycloid")
+
+% Definition of constants
+
+/a 20 def  % radius of base circle
+/b 12 def  % radius of rolling circle
+
+/numturns 3 def
+
+/sum a b add def      % sum = a+b
+/ratio sum b div def  % ratio = (a+b)/b
+ 
+/n 1440 def % number of segments
+/dt numturns 360 mul n div def
+
+/epi{
+/t 0 def    % initial value of t
+
+/x t cos sum mul t ratio mul cos b mul sub def    % initial value of x
+/y t sin sum mul t ratio mul sin b mul sub def    % initial value of y
+    
+newpath
+x y moveto
+
+1 1 n {
+  /i exch def   
+
+  /t dt i mul def                                  % new t
+
+  /x t cos sum mul t ratio mul cos b mul sub def   % new x
+  /y t sin sum mul t ratio mul sin b mul sub def   % new y
+  x y lineto
+} for
+
+closepath
+stroke
+} def
+
+3 setlinewidth
+0.8 0.8 1.0 setrgbcolor
+epi
+
+1 setlinewidth
+1.0 1.0 1.0 setrgbcolor
+epi
+
+showpage
+%EOF

@@ -1,0 +1,95 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 100 100
+
+50 50 translate
+
+% PostScript code for drawing an epitrochoid
+% (Google "Wolfram MathWorld epitrochoid")
+
+% Definition of constants
+
+/a 12 def  % radius of base circle
+/b  8 def  % radius of rolling circle
+/h 16 def  % distance from pen point to center of rolling circle
+
+/numturns b def
+
+/sum a b add def      % sum = a+b
+/ratio sum b div def  % ratio = (a+b)/b
+ 
+/n 1440 def % number of segments
+/dt numturns 360 mul n div def
+
+/epit{
+
+/t 0 def   % initial value of t
+
+/x t cos sum mul t ratio mul cos h mul sub def    % initial value of x
+/y t sin sum mul t ratio mul sin h mul sub def    % initial value of y
+     
+newpath
+x y moveto
+
+1 1 n {
+  /i exch def   
+  /t dt i mul def                                % new t
+
+  /x t cos sum mul t ratio mul cos h mul sub def   % new x
+  /y t sin sum mul t ratio mul sin h mul sub def   % new y
+
+  x y lineto
+} for
+
+closepath
+stroke
+} def
+
+1 setlinejoin
+1 setlinecap
+
+0.8 0.8 1.0 setrgbcolor
+21 setlinewidth
+epit
+
+1.0 1.0 1.0 setrgbcolor
+19 setlinewidth
+epit
+
+0.8 0.8 1.0 setrgbcolor
+17 setlinewidth
+epit
+
+1.0 1.0 1.0 setrgbcolor
+15 setlinewidth
+epit
+
+0.8 0.8 1.0 setrgbcolor
+13 setlinewidth
+epit
+
+1.0 1.0 1.0 setrgbcolor
+11 setlinewidth
+epit
+
+0.8 0.8 1.0 setrgbcolor
+9 setlinewidth
+epit
+
+1.0 1.0 1.0 setrgbcolor
+7 setlinewidth
+epit
+
+0.8 0.8 1.0 setrgbcolor
+5 setlinewidth
+epit
+
+1.0 1.0 1.0 setrgbcolor
+3 setlinewidth
+epit
+
+0.8 0.8 1.0 setrgbcolor
+1 setlinewidth
+epit
+
+showpage
+%EOF

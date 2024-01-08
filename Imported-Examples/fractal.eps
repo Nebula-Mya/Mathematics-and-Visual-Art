@@ -1,0 +1,53 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 100 100
+
+50 50 translate
+
+1 setlinejoin
+1 setlinecap
+
+/g 0.0 def
+/lw 0.5 def
+/maxdepth 3 def   % maximum depth 
+
+g setgray
+
+%  Draw a square centered at (x,y) with radius r and linewidth lw.
+%  If the depth is less than max_depth, draw four more squares
+%  centered at the corners and with radii half as big.
+ 
+%  On stack at entry: r x y lw depth (going from bottom to top).
+
+/square { 5 dict begin            % "square" has 5 arguments
+  /depth exch def
+  /lw exch def
+  /y exch def
+  /x exch def
+  /r exch def
+  lw setlinewidth 
+  newpath
+  x r sub y r sub moveto               % move to (x-r,y-r)
+  x r sub y r add lineto               % line to (x-r,y+r)
+  x r add y r add lineto               % line to (x+r,y+r)
+  x r add y r sub lineto               % line to (x+r,y-r)
+  closepath
+  stroke
+  depth maxdepth lt            % if depth < maxdepth then ...
+    {
+       /lw lw 1 div def
+       /r r 2 div def
+       /depth depth 1 add def
+       r x r 2 mul sub y r 2 mul sub lw depth square
+       r x r 2 mul sub y r 2 mul add lw depth square
+       r x r 2 mul add y r 2 mul add lw depth square
+       r x r 2 mul add y r 2 mul sub lw depth square     
+    }
+  if   
+end } def
+
+20 0 0 lw 1 square
+
+showpage
+%EOF
+
+

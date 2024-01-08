@@ -1,0 +1,69 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 100 100
+
+0.7 setgray
+
+1 setlinejoin
+1 setlinecap
+
+/p0x 10 def
+/p0y 10 def
+/p1x 30 def
+/p1y 70 def
+/p2x 80 def
+/p2y 20 def
+/p3x 90 def
+/p3y 90 def
+
+/r 2 def
+
+newpath
+p0x p0y r 0 360 arc
+fill
+
+newpath
+p1x p1y r 0 360 arc
+fill
+
+newpath
+p2x p2y r 0 360 arc
+fill
+
+newpath
+p3x p3y r 0 360 arc
+fill
+
+0.0 setgray
+
+newpath
+p0x p0y moveto
+p1x p1y 
+p2x p2y 
+p3x p3y curveto
+stroke
+
+/Optima findfont
+3.0 scalefont
+setfont
+
+newpath
+p0x 6 sub p0y 6 sub moveto
+((p0x,p0y)) show
+
+newpath
+p1x 6 sub p1y 6 sub moveto
+((p1x,p1y)) show
+
+newpath
+p2x 6 sub p2y 6 sub moveto
+((p2x,p2y)) show
+
+newpath
+p3x 6 sub p3y 6 add moveto
+((p3x,p3y)) show
+
+showpage
+
+%EOF
+
+
