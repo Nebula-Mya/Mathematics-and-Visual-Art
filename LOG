@@ -29,5 +29,9 @@
 	13:20 - 14:30:
 		figuring out how exactly the formulas for l-systems work via dragon curve
 		planned l-system for hilbert curve (havent tested yet)
-    18:00 - ??:
+    18:00 - 21:20:
         making the hilbert curve
+            had issues with some Fs not drawing, turns out I needed to always draw F rather than checking N was 0, which worked for dragon curve bc it *replaces* previous lines with corners, rather than just adding corners
+            I can just define F to draw (i can even skip pop if i only dup N |X|+|Y| times in X and Y, but I want to pop to keep consistent when I only work with F)
+            also I need to remember to keep the sum of rotations = 0 mod 360
+        made it, scaled it, centered it. (note that only a .eps can restrict output with bounding box)
