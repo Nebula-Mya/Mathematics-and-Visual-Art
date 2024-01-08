@@ -65,13 +65,20 @@
 > made it, scaled it, centered it. (note that only a .eps can restrict output with bounding box)
 
 22:10  
-> i think ill use ¿? instead of BE for l-systems' [] (option+shift+? or RightAlt+? to get ¿)
+> i think ill use ¿? instead of BE for l-systems' [] (option+shift+? or Alt 0191 to get ¿)
   
 ## 1/8/2024  
 14:50  
 > i think ive decided on my focus; mathematically defined organic/natural shapes and structures, especially using l-systems and the golden ratio
 
-16:00 - ?
+16:00 - 18:50
 > making koch snowflake for practice
 >
 >> trying to figure out why its not working
+>>
+>> it wasn't working because I forgot to decrement depth counter and dup for F's in the initial state
+>>
+> making simple tree fractal for practice with branching
+>
+> planning on making a sierpinski via a tree as shown by this gif:
+> ![sierpinski triangle is just a wide 3-branch tree w/o a trunk](https://upload.wikimedia.org/wikipedia/commons/a/a9/Fractal_tree.gif)

@@ -1,0 +1,60 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 800 500
+%%Title: Simple Tree Fractal
+%%Creator: Mya Macke
+
+% order of fractal
+/Order 14 def
+
+% angle between branches
+/Angle 45 def
+
+% scaling factor with branch distance
+    % 22 / (20 + depth)
+/Scale {
+    dup Order exch sub 20 add 22 exch div dup scale
+} def
+
+% equation: Y -> F[+Y][-Y]
+/Y {
+    dup 0 ne
+    {1 sub 3 {dup} repeat F ¿ + Y ? ¿ - Y ?}
+    if pop
+} def
+
+% equation: F -> forward line with scaling
+/F {
+    Scale
+    20 0 rlineto
+    pop
+} def
+
+% rotations
+/+ {Angle 2 div rotate} bind def
+/- {Angle 2 div neg rotate} bind def
+
+% branching
+/¿ {currentpoint stroke moveto gsave} bind def
+/? {stroke grestore} bind def
+
+% cleaner lines
+1 setlinejoin
+1 setlinecap
+
+% drawing
+newpath
+    % move to start
+    400 30 moveto
+
+    % rotate to upright
+    90 rotate
+    
+    % scale full tree as one
+    3 3 scale
+    
+    Order Y
+stroke
+
+showpage
+
+%%EOF
