@@ -1,0 +1,42 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 500 500
+
+% order
+/N 1 def
+
+% equation F: -> F+F--F+F
+/F {
+    dup 0 eq
+    {0 10 rlineto}
+    {1 sub 4 {dup} repeat F + F - - F + F}
+    ifelse pop
+} bind def
+
+% initial state
+/S {
+    + F - - F - F + +
+} def
+
+% rotations: 60°
+/- {-60 rotate} bind def
+/+ {60 rotate} bind def
+
+% cleaner lines
+1 setlinejoin
+1 setlinecap
+
+% drawing
+newpath
+    % center in box
+    50 50 moveto
+
+    % scale down by a factor of 40/3^N to constrain final size to 400
+    40 3 N exp div dup scale
+
+    % create path
+    N S
+stroke
+
+showpage
+
+%%EOF

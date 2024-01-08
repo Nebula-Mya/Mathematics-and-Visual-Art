@@ -70,3 +70,8 @@
 ## 1/8/2024  
 14:50  
 > i think ive decided on my focus; mathematically defined organic/natural shapes and structures, especially using l-systems and the golden ratio
+
+16:00 - ?
+> making koch snowflake for practice
+>
+>> trying to figure out why its not working
