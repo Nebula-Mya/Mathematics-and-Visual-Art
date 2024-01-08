@@ -3,13 +3,18 @@
 
 
 ## 1/4/2024:  
-    14:30 - 15:50  
-        setting up code suite for postscript  
-        setting up OpenSCAD  
-        Light research on Vera Molnar  
-        Looking at project topics on syllabus  
-        Looking at Bridges Archive  
-        Parquet Deformations look SUPER interesting tbh  
+14:30 - 15:50  
+> setting up code suite for postscript
+> 
+> setting up OpenSCAD
+> 
+> Light research on Vera Molnar
+> 
+> Looking at project topics on syllabus
+> 
+> Looking at Bridges Archive
+>  
+> Parquet Deformations look SUPER interesting tbh  
         
 ## 1/5/2024:  
     9:13  
@@ -29,7 +34,7 @@
             omg this might be what I focus on  
         imported l-system examples to study  
         kinda made a fern in wind?  
-        to do: read [this paper] (https://www.cstug.cz/bulletin/pdf/2012-1.pdf) on l-systems in postscript (english starts p11)
+        to do: read [this paper](https://www.cstug.cz/bulletin/pdf/2012-1.pdf) on l-systems in postscript (english starts p11)
           
 ## 1/7/2024:  
 	13:20 - 14:30  
