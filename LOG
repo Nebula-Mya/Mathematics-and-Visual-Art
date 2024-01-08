@@ -35,3 +35,5 @@
             I can just define F to draw (i can even skip pop if i only dup N |X|+|Y| times in X and Y, but I want to pop to keep consistent when I only work with F)
             also I need to remember to keep the sum of rotations = 0 mod 360
         made it, scaled it, centered it. (note that only a .eps can restrict output with bounding box)
+	22:10:
+		i think ill use ¿? instead of BE for l-systems' [] (option+shift+? or RightAlt+? to get ¿)
