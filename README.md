@@ -92,3 +92,10 @@
 > made a sierpinski triangle tree
 >
 >> learned that, because scaling is saved (and restored by branching), basic scaling with depth doesn't need to use the current depth, ie halving each time is just 0.5 dup scale in F
+
+22:40
+> idea for using l-systems for art pieces!!
+>
+>> do photography focusing on plants and tress and then replicate it with mathematics, with the final piece being some kind of combination of both parts
+>> 
+>> my first thought was overlaying them, but that might be hard to make look good, though tastefully putting the parts next to eachother might work
