@@ -1,5 +1,5 @@
 %!PS-Adobe-3.0 EPSF-3.0
-%%BoundingBox: 0 0 550 400
+%%BoundingBox: 0 0 490 300
 %%Title: Solstice Canyon Greenery
 %%Creator: Mya Macke
 
@@ -9,8 +9,8 @@
 % scaling factor with depth
 /Scale {0.8 dup scale} bind def
 
-% angle of rotation
-/Angle {rand 7 mod 10 add} def
+% angle of rotation (13 +/- 3)
+/Angle {rand 5 mod 10 add} def
 
 % make leaf
 /Leaf {
@@ -60,7 +60,7 @@
 % equation L -> ScaleF[Green6+F][L][Green6-F]
 /L {
     dup 0 ne {
-        decr 4 ndup Scale F ¿ Leaf 90+ - + F ? ¿ L ? ¿ Leaf 90- + - F ?
+        decr 4 ndup Scale F ¿ Leaf + + + + + + F ? ¿ L ? ¿ Leaf - - - - - - F ?
     } if
     pop
 } bind def
@@ -81,7 +81,7 @@ newpath
     0.25 0.15 0.05 setrgbcolor
 
     % move to start
-    450 50 moveto
+    440 20 moveto
 
     % uniform scaling
     3 dup scale

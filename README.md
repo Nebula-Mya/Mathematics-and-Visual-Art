@@ -104,7 +104,7 @@
 9:00 - 9:20
 > looked through pictures i have (from me or pa) to use for practice, as its raining too much today to take any new ones and i want a proof of concept for class tomorrow
 
-12:40 - ??
+12:40 - 14:45
 > imported practice photos taken by me, pa, and ma
 >
 > made a l-system for a shrub in ma's solstice canyon pic
