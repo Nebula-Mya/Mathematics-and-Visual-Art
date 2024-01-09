@@ -106,3 +106,5 @@
 
 12:40 - ??
 > imported practice photos taken by me, pa, and ma
+>
+> made a l-system for a shrub in ma's solstice canyon pic

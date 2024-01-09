@@ -1,0 +1,94 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 550 400
+%%Title: Solstice Canyon Greenery
+%%Creator: Mya Macke
+
+% order of fractal
+/Order 16 def
+
+% scaling factor with depth
+/Scale {0.8 dup scale} bind def
+
+% angle of rotation
+/Angle {rand 7 mod 10 add} def
+
+% make leaf
+/Leaf {
+    0.6 0.9 0.4 setrgbcolor
+    dup 1 add 12 div dup scale
+    dup 1 add 36 exch div setlinewidth
+} bind def
+
+% decrement by 1
+/decr {1 sub} bind def
+
+% make n copies on top of stack
+/ndup {{dup} repeat} bind def
+
+% branching
+/¿ {currentpoint stroke moveto gsave} bind def
+/? {stroke grestore} bind def
+
+% rotations
+/+ {Angle rotate} bind def
+/- {Angle neg rotate} bind def
+/90+ {90 rotate} bind def
+/90- {90 neg rotate} bind def
+
+% forward line
+/F {
+    10 0 rlineto
+    pop
+} bind def
+
+% equation X -> [F+X][4-Y]
+/X {
+    dup 0 ne {
+        decr 3 ndup ¿ F 5 rotate X ? ¿ 90- + + Y ?
+    } if
+    pop
+} bind def
+
+% equation Y -> ScaleFScale[+F-L][-F+L]
+/Y {
+    dup 0 ne {
+        decr 5 ndup Scale F ¿ + F - L ? ¿ - F + L ?
+    } if
+    pop
+} bind def
+
+% equation L -> ScaleF[Green6+F][L][Green6-F]
+/L {
+    dup 0 ne {
+        decr 4 ndup Scale F ¿ Leaf 90+ - + F ? ¿ L ? ¿ Leaf 90- + - F ?
+    } if
+    pop
+} bind def
+
+% initial state
+/Start {
+    decr 2 ndup 90+ + + + F X
+    pop
+} bind def
+
+% drawing
+newpath
+    % clean lines
+    1 setlinejoin
+    1 setlinecap
+
+    % stem color
+    0.25 0.15 0.05 setrgbcolor
+
+    % move to start
+    450 50 moveto
+
+    % uniform scaling
+    3 dup scale
+
+    Order Start
+stroke
+
+showpage
+
+%%EOF
