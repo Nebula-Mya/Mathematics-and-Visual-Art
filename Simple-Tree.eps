@@ -12,26 +12,26 @@
 % scaling factor with branch distance
     % 22 / (20 + depth)
 /Scale {
-    dup Order exch sub 20 add 22 exch div dup scale
-} def
+    dup //Order exch sub 20 add 22 exch div dup scale
+} bind def
 
 % equation: Y -> F[+Y][-Y]
 /Y {
     dup 0 ne
     {1 sub 3 {dup} repeat F ¿ + Y ? ¿ - Y ?}
     if pop
-} def
+} bind def
 
 % equation: F -> forward line with scaling
 /F {
     Scale
     20 0 rlineto
     pop
-} def
+} bind def
 
 % rotations
-/+ {Angle 2 div rotate} bind def
-/- {Angle 2 div neg rotate} bind def
+/+ {//Angle 2 div rotate} bind def
+/- {//Angle 2 div neg rotate} bind def
 
 % branching
 /¿ {currentpoint stroke moveto gsave} bind def

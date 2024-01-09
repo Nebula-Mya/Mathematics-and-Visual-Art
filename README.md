@@ -80,5 +80,11 @@
 >>
 > making simple tree fractal for practice with branching
 >
-> planning on making a sierpinski via a tree as shown by this gif:
-> ![sierpinski triangle is just a wide 3-branch tree w/o a trunk](https://upload.wikimedia.org/wikipedia/commons/a/a9/Fractal_tree.gif)
+> <details><summary>planning on making a sierpinski via a tree as shown by this gif:</summary>
+>
+> ![sierpinski triangle is just a wide 3-branch tree w/o a trunk](https://upload.wikimedia.org/wikipedia/commons/a/a9/Fractal_tree.gif)</details>
+
+20:10 - ??
+> cleaned up simple tree fractal to optimise it
+> 
+> added shortcut to type ¿ with "shift+alt+/", same as on the ipad
