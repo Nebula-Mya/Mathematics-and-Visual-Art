@@ -84,7 +84,11 @@
 >
 > ![sierpinski triangle is just a wide 3-branch tree w/o a trunk](https://upload.wikimedia.org/wikipedia/commons/a/a9/Fractal_tree.gif)</details>
 
-20:10 - ??
+20:10 - 22:10
 > cleaned up simple tree fractal to optimise it
 > 
 > added shortcut to type ¿ with "shift+alt+/", same as on the ipad
+>
+> made a sierpinski triangle tree
+>
+>> learned that, because scaling is saved (and restored by branching), basic scaling with depth doesn't need to use the current depth, ie halving each time is just 0.5 dup scale in F

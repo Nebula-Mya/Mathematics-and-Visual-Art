@@ -7,9 +7,10 @@
 /Order 10 def
 
 % scaling factor with depth
-    % 2 / 2^depth
 /Scale {
-    dup //Order exch sub 2 3 div exch exp dup scale
+    % dup //Order exch sub 1 sub 2 exch exp 1 exch div dup scale
+    0.5 dup scale
+    2 setlinewidth
 } bind def
 
 % decrement by 1
@@ -29,7 +30,7 @@
 % draw forward line with scaling
 /F {
     Scale
-    400 3 div 0 rlineto
+    800 3 div 0 rlineto
     pop
 } bind def
 
