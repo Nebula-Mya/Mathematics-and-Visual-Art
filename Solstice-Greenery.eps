@@ -1,7 +1,10 @@
 %!PS-Adobe-3.0 EPSF-3.0
-%%BoundingBox: 0 0 490 300
+%%BoundingBox: 0 0 510 320
 %%Title: Solstice Canyon Greenery
 %%Creator: Mya Macke
+
+% is seed from tick?
+/TickRando? false def
 
 % order of fractal
 /Order 16 def
@@ -9,8 +12,14 @@
 % scaling factor with depth
 /Scale {0.8 dup scale} bind def
 
-% angle of rotation (13 +/- 3)
-/Angle {rand 5 mod 10 add} def
+% angle of rotation (12 +/- 2)
+/Angle [
+    TickRando? {
+        {realtime srand}
+        aload pop
+    } if
+    {rand 5 mod 10 add} aload pop
+] cvx bind def
 
 % make leaf
 /Leaf {
