@@ -4,7 +4,7 @@
 
 ## 1/4/2024  
 14:30 - 15:50  
-> setting up code suite for postscript
+> setting up codespace for postscript
 > 
 > setting up OpenSCAD
 > 
