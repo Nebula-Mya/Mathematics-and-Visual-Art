@@ -99,3 +99,7 @@
 >> do photography focusing on plants and tress and then replicate it with mathematics, with the final piece being some kind of combination of both parts
 >> 
 >> my first thought was overlaying them, but that might be hard to make look good, though tastefully putting the parts next to eachother might work
+
+## 1/9/2024
+9:00 - 9:20
+> looked through pictures i have (from me or pa) to use for practice, as its raining too much today to take any new ones and i want a proof of concept for class tomorrow
