@@ -103,3 +103,6 @@
 ## 1/9/2024
 9:00 - 9:20
 > looked through pictures i have (from me or pa) to use for practice, as its raining too much today to take any new ones and i want a proof of concept for class tomorrow
+
+12:40 - ??
+> imported practice photos taken by me, pa, and ma
