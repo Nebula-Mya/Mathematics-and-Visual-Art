@@ -108,3 +108,11 @@
 > imported practice photos taken by me, pa, and ma
 >
 > made a l-system for a shrub in ma's solstice canyon pic
+
+17:30 - 18:50
+> updated shrub to match photo more closely
+>
+> experimented with replacing orig. shrub with generated
+
+20:00 - 21:30
+> finished a proof of concept with the solstice canyon greenery shrub

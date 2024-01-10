@@ -1,5 +1,5 @@
 %!PS-Adobe-3.0 EPSF-3.0
-%%BoundingBox: 0 0 510 320
+%%BoundingBox: 0 0 800 830
 %%Title: Solstice Canyon Greenery
 %%Creator: Mya Macke
 
@@ -7,7 +7,7 @@
 /TickRando? false def
 
 % order of fractal
-/Order 16 def
+/Order 18 def
 
 % scaling factor with depth
 /Scale {0.8 dup scale} bind def
@@ -21,9 +21,18 @@
     {rand 5 mod 10 add} aload pop
 ] cvx bind def
 
+% color variance
+/CVar [
+    TickRando? {
+        {realtime srand}
+        aload pop
+    } if
+    {rand 151 mod 1000 div .075 sub add} aload pop
+] cvx bind def
+
 % make leaf
 /Leaf {
-    0.6 0.9 0.4 setrgbcolor
+    0.482 CVar 0.655 CVar 0.255 CVar setrgbcolor
     dup 1 add 12 div dup scale
     dup 1 add 36 exch div setlinewidth
 } bind def
@@ -50,33 +59,33 @@
     pop
 } bind def
 
-% equation X -> [F+X][4-Y]
+% equation X -> [F F +2° X] [- - - - Y]
 /X {
     dup 0 ne {
-        decr 3 ndup ¿ F 5 rotate X ? ¿ 90- + + Y ?
+        decr 4 ndup ¿ F F 2 rotate X ? ¿ - - - - Y ?
     } if
     pop
 } bind def
 
-% equation Y -> ScaleFScale[+F-L][-F+L]
+% equation Y -> F F [+ F - L] [- F + L]
 /Y {
     dup 0 ne {
-        decr 5 ndup Scale F ¿ + F - L ? ¿ - F + L ?
+        decr 6 ndup Scale F F ¿ + F - L ? ¿ - F + L ?
     } if
     pop
 } bind def
 
-% equation L -> ScaleF[Green6+F][L][Green6-F]
+% equation L -> F [+ + + + + + F F] [L] [- - - - - - F F]
 /L {
     dup 0 ne {
-        decr 4 ndup Scale F ¿ Leaf + + + + + + F ? ¿ L ? ¿ Leaf - - - - - - F ?
+        decr 6 ndup 0.9 dup scale F ¿ Leaf + + + + + + F F ? ¿ L ? ¿ Leaf - - - - - - F F ?
     } if
     pop
 } bind def
 
-% initial state
+% initial state -> + + F F X
 /Start {
-    decr 2 ndup 90+ + + + F X
+    decr 3 ndup 90+ + + F F X
     pop
 } bind def
 
@@ -87,10 +96,10 @@ newpath
     1 setlinecap
 
     % stem color
-    0.25 0.15 0.05 setrgbcolor
+    0.22 0.22 0.227 setrgbcolor
 
     % move to start
-    440 20 moveto
+    720 15 moveto
 
     % uniform scaling
     3 dup scale
