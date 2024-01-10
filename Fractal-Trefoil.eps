@@ -26,27 +26,79 @@
 /+ {//Angle rotate} bind def
 /- {//Angle neg rotate} bind def
 
+
+
+% initial circle
+500 500 450 0 360 arc
+0.5 setgray
+fill
+500 500 450 0 360 arc
+0 setgray
+stroke
+500 500 430 0 360 arc
+1 setgray
+fill
+500 500 430 0 360 arc
+0 setgray
+stroke
+
+    % elements
+        500 500 translate
+        % top fill
+        0 220 230 0 360 arc
+        0.5 setgray
+    fill
+        % top clear center
+        0 220 210 0 360 arc
+        1 setgray
+    fill
+        % bottom fill
+        0 -220 230 0 360 arc
+        0.5 setgray
+    fill
+         % bottom clear center
+        0 -220 210 0 360 arc
+        1 setgray
+    fill
+
+        % top right
+        0 220 230 270 35 arc
+        0 setgray
+    stroke
+        % top left
+        0 220 230 90 243 arc
+    stroke
+        % top inner
+        0 220 210 0 360 arc
+    stroke
+        % top fixes
+        0 0 450 70 90 arc
+    stroke
+        0 0 430 70 90 arc
+    stroke
+
+        % bottom right
+        0 -220 230 270 63 arc
+    stroke
+        % bottom left
+        0 -220 230 90 215 arc
+    stroke
+        % bottom inner
+        0 -220 210 0 360 arc
+    stroke
+        % bottom fixes
+        0 0 450 250 270 arc
+    stroke
+        0 0 430 250 270 arc
+    stroke
+
 % draw circle
-/newpath
+newpath
     % clean lines
     1 setlinecap
     1 setlinejoin
     5 setlinewidth
 
-    500 500 450 0 360 arc
-    gsave
-    0.5 setgray
-    fill
-    grestore
-    0 setgray
-    stroke
-    500 500 400 0 360 arc
-    gsave
-    1 setgray
-    fill
-    grestore
-    0 0 0 setrgbcolor
-stroke
 
 showpage
 %%EOF
