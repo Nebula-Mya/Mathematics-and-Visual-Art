@@ -116,3 +116,13 @@
 
 20:00 - 21:30
 > finished a proof of concept with the solstice canyon greenery shrub
+
+## 1/10/2024
+14:30 - ??
+> added random angles to simple tree
+>
+> omg i should introduce randomness to the equations!
+>
+> i want to try generating knots (fractal?) using l-systems (use a lambda element to close openings for overlaps)
+>
+>> started working on this

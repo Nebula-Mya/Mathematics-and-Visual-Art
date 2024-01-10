@@ -1,0 +1,52 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 1000 1000
+%%Title: Fractal Trefoil
+%%Creator: Mya Macke
+
+% order of fractal
+/Order 1 def
+
+% scaling factor with depth
+/Scale {0.5 dup scale} bind def
+
+% angle of rotation
+/Angle 90 def
+
+% decrement by 1
+/decr {1 sub} bind def
+
+% make n copies on top of stack
+/ndup {{dup} repeat} bind def
+
+% branching
+/¿ {currentpoint stroke moveto gsave} bind def
+/? {stroke grestore} bind def
+
+% rotations
+/+ {//Angle rotate} bind def
+/- {//Angle neg rotate} bind def
+
+% draw circle
+/newpath
+    % clean lines
+    1 setlinecap
+    1 setlinejoin
+    5 setlinewidth
+
+    500 500 450 0 360 arc
+    gsave
+    0.5 setgray
+    fill
+    grestore
+    0 setgray
+    stroke
+    500 500 400 0 360 arc
+    gsave
+    1 setgray
+    fill
+    grestore
+    0 0 0 setrgbcolor
+stroke
+
+showpage
+%%EOF

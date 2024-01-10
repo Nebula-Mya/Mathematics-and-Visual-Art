@@ -1,13 +1,30 @@
 %!PS-Adobe-3.0 EPSF-3.0
-%%BoundingBox: 0 0 800 500
+%%BoundingBox: 0 0 800 600
 %%Title: Simple Tree Fractal
 %%Creator: Mya Macke
+
+% rando stuff
+/Rando? true def
+/TickRando? true def
 
 % order of fractal
 /Order 14 def
 
-% angle between branches
-/Angle 45 def
+% angle: 17.5˚ (opt +/- 5˚)
+/Angle [
+    TickRando? {
+        {realtime srand}
+        aload pop
+    } if
+    Rando? {
+        {rand 11 mod 12.5 add} 
+        aload pop
+    }
+    {
+        {17.5}
+        aload pop
+    } ifelse
+] cvx bind def
 
 % scaling factor with branch distance
     % 22 / (20 + depth)
@@ -30,8 +47,8 @@
 } bind def
 
 % rotations
-/+ {//Angle 2 div rotate} bind def
-/- {//Angle 2 div neg rotate} bind def
+/+ {Angle rotate} bind def
+/- {Angle neg rotate} bind def
 
 % branching
 /¿ {currentpoint stroke moveto gsave} bind def
@@ -52,7 +69,7 @@ newpath
     % scale full tree as one
     3 3 scale
     
-    Order Y
+    Order 2 {dup} repeat F Y
 stroke
 
 showpage
