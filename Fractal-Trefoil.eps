@@ -4,13 +4,24 @@
 %%Creator: Mya Macke
 
 % order of fractal
-/Order 1 def
+/Order 5 def
+
+% depth tracking (need to bring over an extra current order)
+/Depth {//Order exch sub 1 add} bind def
 
 % scaling factor with depth
 /Scale {0.5 dup scale} bind def
+/NoScale {//Order exch sub 2 exch exp} bind def
 
 % angle of rotation
 /Angle 90 def
+
+% colors
+/FillColor {0.5 setgray} bind def
+/LineColor {0 setgray} bind def
+
+% line thikness
+/LineWidth {2 setlinewidth} bind def
 
 % decrement by 1
 /decr {1 sub} bind def
@@ -26,79 +37,132 @@
 /+ {//Angle rotate} bind def
 /- {//Angle neg rotate} bind def
 
+% initial state
+/Start {
+    dup
+    % axiom
+        % fill
+        500 500 450 0 360 arc
+        FillColor
+        fill
 
+        % clear center
+        500 500 430 0 360 arc
+        1 setgray
+        fill
 
-% initial circle
-500 500 450 0 360 arc
-0.5 setgray
-fill
-500 500 450 0 360 arc
-0 setgray
-stroke
-500 500 430 0 360 arc
-1 setgray
-fill
-500 500 430 0 360 arc
-0 setgray
-stroke
+        LineColor
 
-    % elements
+        % outer line
+        500 500 450 0 360 arc
+        stroke
+
+        % inner line
+        500 500 430 0 360 arc
+        stroke
+
+        % positioning for x
         500 500 translate
+
+        % counter decr for x
+        1 add
+
+        % first knot
+        X
+    pop
+} bind def
+
+% equation for X (too complicated, not even really an L-system at this point)
+/X {
+    dup 0 ne {
+        decr 2 ndup
+
+        FillColor
+
         % top fill
-        0 220 230 0 360 arc
-        0.5 setgray
-    fill
-        % top clear center
-        0 220 210 0 360 arc
-        1 setgray
-    fill
+        dup 0 exch 220 exch NoScale 10 mul 220 add 0 360 arc
+        fill
+
         % bottom fill
-        0 -220 230 0 360 arc
-        0.5 setgray
-    fill
-         % bottom clear center
-        0 -220 210 0 360 arc
+        dup 0 exch -220 exch NoScale 10 mul 220 add 0 360 arc
+        fill
+
         1 setgray
-    fill
+
+        % top clear center
+        dup 0 exch 220 exch NoScale 10 mul 220 exch sub 0 360 arc
+        fill
+
+        % bottom clear center
+        dup 0 exch -220 exch NoScale 10 mul 220 exch sub 0 360 arc
+        fill
+
+        LineColor
 
         % top right
-        0 220 230 270 35 arc
-        0 setgray
-    stroke
+        dup 0 exch 220 exch NoScale 10 mul 220 add 270 55.5 arc
+        stroke
+
         % top left
-        0 220 230 90 243 arc
-    stroke
+        dup 0 exch 220 exch NoScale 10 mul 220 add 90 253 arc
+        stroke
+
         % top inner
-        0 220 210 0 360 arc
-    stroke
+        dup 0 exch 220 exch NoScale 10 mul 220 exch sub 0 360 arc
+        stroke
+
         % top fixes
-        0 0 450 70 90 arc
-    stroke
-        0 0 430 70 90 arc
-    stroke
+        dup 0 exch 0 exch NoScale 10 mul 440 add 70 90 arc
+        stroke
+        dup 0 exch 0 exch NoScale 10 mul 440 exch sub 70 90 arc
+        stroke
 
         % bottom right
-        0 -220 230 270 63 arc
-    stroke
-        % bottom left
-        0 -220 230 90 215 arc
-    stroke
-        % bottom inner
-        0 -220 210 0 360 arc
-    stroke
-        % bottom fixes
-        0 0 450 250 270 arc
-    stroke
-        0 0 430 250 270 arc
-    stroke
+        dup 0 exch -220 exch NoScale 10 mul 220 add 270 73 arc
+        stroke
 
-% draw circle
+        % bottom left
+        dup 0 exch -220 exch NoScale 10 mul 220 add 90 235.5 arc
+        stroke
+
+        % bottom inner
+        dup 0 exch -220 exch NoScale 10 mul 220 exch sub 0 360 arc
+        stroke
+
+        % bottom fixes
+        dup 0 exch 0 exch NoScale 10 mul 440 add 250 270 arc
+        stroke
+        dup 0 exch 0 exch NoScale 10 mul 440 exch sub 250 270 arc
+        stroke
+
+        gsave
+
+        % top knot
+        0 220 translate
+        Scale + X
+
+        grestore
+
+        % bottom knot
+        0 -220 translate
+        Scale + X
+    } if
+    pop
+} bind def
+
+% drawing
 newpath
     % clean lines
     1 setlinecap
     1 setlinejoin
-    5 setlinewidth
+    LineWidth
 
+    % uniform scaling
+    1 dup scale
+
+    Order Start
+stroke
 
 showpage
+
 %%EOF
