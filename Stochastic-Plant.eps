@@ -1,17 +1,17 @@
 %!PS-Adobe-3.0 EPSF-3.0
-%%BoundingBox: 0 0 1200 1000
+%%BoundingBox: 0 0 1400 1000
 %%Title: Stochastic Plant
 %%Creator: Mya Macke
 
 % rando settings
-/AngleRando? false def
-/TickRando? false def
+/AngleRando? true def
+/TickRando? true def
 
 % number of iterations
-/Order 7 def
+/Order 11 def
 
 % scaling factor
-/Scale 0.5 def
+/Scale {0.8 dup scale} bind def
 
 % angle: 15˚ (opt +/- 5˚)
 /Theta 15 def
@@ -57,7 +57,8 @@
 
 % forward line
 /F {
-    10 0 rlineto
+    Scale
+    20 0 rlineto
     pop
 } bind def
 
@@ -70,15 +71,15 @@
         }
         {
             decr 4 ndup
-            F ¿ + X ? ¿ X ? ¿ - X ?
+            F ¿ + + X ? ¿ X ? ¿ - - X ?
         } ifelse
     } if pop
 } bind def
 
-% initial state -> FFX
+% axiom -> X
 /Start {
-    2 ndup
-    F X
+    1 ndup
+    X
     pop
 } bind def
 
@@ -91,13 +92,13 @@ newpath
     0 0 0 setrgbcolor
 
     % move to start
-    600 50 moveto
+    700 50 moveto
 
     % rotate upright
     90 rotate
 
     % uniform scaling
-    10 dup scale
+    12 dup scale
 
     Order Start
 stroke
