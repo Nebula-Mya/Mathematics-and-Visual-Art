@@ -132,3 +132,7 @@
 
 20:00 - 22:22
 > worked on fractal trefoil
+
+## 1/11/2024
+12:25 - 1:08
+> worked on a stochastic (probability to equations) l-system plant

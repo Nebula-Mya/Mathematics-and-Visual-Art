@@ -1,0 +1,107 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 1200 1000
+%%Title: Stochastic Plant
+%%Creator: Mya Macke
+
+% rando settings
+/AngleRando? false def
+/TickRando? false def
+
+% number of iterations
+/Order 7 def
+
+% scaling factor
+/Scale 0.5 def
+
+% angle: 15˚ (opt +/- 5˚)
+/Theta 15 def
+/Variance 5 def
+/Angle [
+    TickRando? {
+        {realtime srand}
+        aload pop
+    } if
+    AngleRando? {
+        {rand //Variance 2 mul 1 add mod //Variance sub //Theta add} 
+        aload pop
+    }
+    {
+        {//Theta}
+        aload pop
+    } ifelse
+] cvx bind def
+
+% percentage (operator)
+/Chance [
+    TickRando? {
+        {realtime srand}
+        aload pop
+    } if
+    {rand 100 mod exch lt}
+    aload pop 
+] cvx bind def
+
+% decrement by 1
+/decr {1 sub} bind def
+
+% make n copies on top of stack
+/ndup {{dup} repeat} bind def
+
+% branching
+/¿ {currentpoint stroke moveto gsave} bind def
+/? {stroke grestore} bind def
+
+% rotations
+/+ {Angle rotate} bind def
+/- {Angle neg rotate} bind def
+
+% forward line
+/F {
+    10 0 rlineto
+    pop
+} bind def
+
+% equation X -> 50:50 F[+X][-X] OR F[+X][X][-X]
+/X {
+    dup 0 ne {
+        50 Chance {
+            decr 3 ndup
+            F ¿ + X ? ¿ - X ?
+        }
+        {
+            decr 4 ndup
+            F ¿ + X ? ¿ X ? ¿ - X ?
+        } ifelse
+    } if pop
+} bind def
+
+% initial state -> FFX
+/Start {
+    2 ndup
+    F X
+    pop
+} bind def
+
+% drawing
+newpath
+    % line chars
+    1 setlinecap
+    1 setlinejoin
+    0.5 setlinewidth
+    0 0 0 setrgbcolor
+
+    % move to start
+    600 50 moveto
+
+    % rotate upright
+    90 rotate
+
+    % uniform scaling
+    10 dup scale
+
+    Order Start
+stroke
+
+showpage
+
+%%EOF
