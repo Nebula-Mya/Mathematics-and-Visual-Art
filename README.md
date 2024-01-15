@@ -136,3 +136,6 @@
 ## 1/11/2024
 12:25 - 1:08
 > worked on a stochastic (probability to equations) l-system plant
+
+## 1/15/2024
+> edited and uploaded the best pic ive gotten so far for this project, the weather has been very limiting
