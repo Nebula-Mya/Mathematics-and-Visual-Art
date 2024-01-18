@@ -141,6 +141,5 @@
 > edited and uploaded the best pic ive gotten so far for this project, the weather has been very limiting
 
 ## 1/18/2024
-14:00 - ??
-> worked on l-system for photo
-> worked on l-system for photo
+14:00 - 14:30
+> planned l-system for photo
