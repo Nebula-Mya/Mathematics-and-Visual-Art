@@ -143,3 +143,9 @@
 ## 1/18/2024
 14:00 - 14:30
 > planned l-system for photo
+
+## 1/19/2024
+14:45 - 16:10
+> worked on l-system for photo
+>
+>> why is my tick rando broken?????

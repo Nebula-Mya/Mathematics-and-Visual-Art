@@ -1,0 +1,158 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 12000 12000
+%%Title: My EPS File
+%%Creator: Mya Macke
+
+% quick false and true
+/t true def
+/f false def
+
+% rando settings
+/AngleRando? t def
+/LengthRando? t def
+/TickRando? f def % broken?????
+/SetSeed? t def
+/Seed? 9 def
+
+% number of iterations
+/Order 10 def
+
+% scaling factor
+/Scale {0.85 dup scale} bind def
+
+% set seed
+SetSeed? {
+    Seed? srand
+    /TickRando? false def
+} if
+
+% angle: 90˚ (opt +/- 20˚)
+/Theta 90 def
+/Variance 20 def
+/Angle [
+    TickRando? {
+        {realtime srand}
+        aload pop
+    } if
+    AngleRando? {
+        {rand //Variance 2 mul 1 add mod //Variance sub //Theta add} 
+        aload pop
+    }
+    {
+        {//Theta}
+        aload pop
+    } ifelse
+] cvx bind def
+
+% percentage (operator)
+/Chance [
+    TickRando? {
+        {realtime srand}
+        aload pop
+    } if
+    {rand 100 mod exch lt}
+    aload pop 
+] cvx bind def
+
+% color variance
+/CVar [
+    TickRando? {
+        {realtime srand}
+        aload pop
+    } if
+    {rand 151 mod 1000 div .075 sub add} aload pop
+] cvx bind def
+
+% length variance +/- 5
+/LVar [
+    LengthRando? {
+        TickRando? {
+            {realtime srand}
+            aload pop
+        } if
+        {rand 11 mod 5 sub add} aload pop
+    } if
+] cvx bind def
+
+% decrement by 1
+/decr {1 sub} bind def
+
+% make n copies on top of stack
+/ndup {{dup} repeat} bind def
+
+% branching
+/¿ {currentpoint stroke moveto gsave} bind def
+/? {stroke grestore} bind def
+
+% rotations
+/+ {Angle rotate} bind def
+/- {Angle neg rotate} bind def
+/+or- {50 Chance {+} {-} ifelse} def
+/s+ {Angle 2 div rotate} bind def
+/s- {Angle 2 div neg rotate} bind def
+/s+or- {50 Chance {s+} {s-} ifelse} def
+
+% forward line
+/F {
+    Scale
+    0.22 CVar 0.22 CVar 0.227 CVar setrgbcolor
+    15 LVar 0 rlineto
+    pop
+} bind def
+/nF {{F} repeat} bind def
+
+% equation T -> nF[T][+/-Y]
+/T {
+    dup 0 ne {
+        decr 4 ndup
+        + - F + - F ¿ T ? ¿ +or- fY ?
+    } if pop
+} bind def
+
+% equation Y -> nF{[Y][+/-Y] 50or50 [s+Y][s-Y]}
+/Y {
+    dup 0 ne {
+        decr 4 ndup
+        + - F + - F
+        50 Chance {
+            ¿ Y ? ¿ +or- Y ?
+        } {
+            ¿ s+ Y ? ¿ s- Y ?
+        } ifelse
+    } if pop
+} bind def
+
+% initial Y
+/fY {
+    0.5 dup scale
+    Y
+} bind def
+
+% axiom -> T
+/Start {
+    195 rotate
+    1 ndup
+    T
+    pop
+} bind def
+
+% drawing
+newpath
+    % line chars
+    1 setlinecap
+    1 setlinejoin
+    1.5 setlinewidth
+    0 setgray
+
+    % move to start
+    11000 6000 moveto
+
+    % uniform scaling
+    120 dup scale
+
+    Order Start
+stroke
+
+showpage
+
+%%EOF
