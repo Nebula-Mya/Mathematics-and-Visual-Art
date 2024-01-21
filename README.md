@@ -161,3 +161,5 @@
 >> turns out i can't without an extension, and i don't care enough to deal with that
 >>
 > picked 4 seeds for final piece
+>
+> made final piece (A Lone Branch), with vertical, horizontal, and seperated versions
