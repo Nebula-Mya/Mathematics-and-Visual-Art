@@ -1,6 +1,6 @@
 %!PS-Adobe-3.0 EPSF-3.0
 %%BoundingBox: 0 0 12000 12000
-%%Title: My EPS File
+%%Title: ???
 %%Creator: Mya Macke
 
 % quick false and true
@@ -10,9 +10,10 @@
 % rando settings
 /AngleRando? t def
 /LengthRando? t def
-/TickRando? f def % broken?????
+/TickRando? f def
 /SetSeed? t def
-/Seed? 9 def
+/Seed? 22 def
+    % nice seeds: 9, 11, 12, 16, 18
 
 % number of iterations
 /Order 10 def
@@ -25,51 +26,36 @@ SetSeed? {
     Seed? srand
     /TickRando? false def
 } if
+TickRando? {
+    realtime srand
+} if
 
 % angle: 90˚ (opt +/- 20˚)
 /Theta 90 def
 /Variance 20 def
 /Angle [
-    TickRando? {
-        {realtime srand}
-        aload pop
-    } if
     AngleRando? {
         {rand //Variance 2 mul 1 add mod //Variance sub //Theta add} 
         aload pop
-    }
-    {
+    } {
         {//Theta}
         aload pop
     } ifelse
 ] cvx bind def
 
 % percentage (operator)
-/Chance [
-    TickRando? {
-        {realtime srand}
-        aload pop
-    } if
-    {rand 100 mod exch lt}
-    aload pop 
-] cvx bind def
+/Chance {
+    rand 100 mod exch lt
+ } bind def
 
 % color variance
-/CVar [
-    TickRando? {
-        {realtime srand}
-        aload pop
-    } if
-    {rand 151 mod 1000 div .075 sub add} aload pop
-] cvx bind def
+/CVar {
+    rand 151 mod 1000 div .075 sub add
+} bind def
 
 % length variance +/- 5
 /LVar [
     LengthRando? {
-        TickRando? {
-            {realtime srand}
-            aload pop
-        } if
         {rand 11 mod 5 sub add} aload pop
     } if
 ] cvx bind def

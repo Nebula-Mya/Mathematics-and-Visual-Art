@@ -149,3 +149,11 @@
 > worked on l-system for photo
 >
 >> why is my tick rando broken?????
+
+## 1/21/2024
+15:30 - ??
+> fixed tick rando (moved it outside of calls so it only sets seed once)
+>
+> tried different set seeds
+>
+> made the ps2pdf keybind save first automatically
