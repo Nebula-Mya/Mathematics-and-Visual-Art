@@ -151,7 +151,7 @@
 >> why is my tick rando broken?????
 
 ## 1/21/2024
-15:30 - ??
+15:30 - 18:40
 > fixed tick rando (moved it outside of calls so it only sets seed once)
 >
 > tried different set seeds
