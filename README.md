@@ -156,4 +156,8 @@
 >
 > tried different set seeds
 >
-> made the ps2pdf keybind save first automatically
+> tried to make the ps2pdf keybind save first automatically
+>
+>> turns out i can't without an extension, and i don't care enough to deal with that
+>>
+> picked 4 seeds for final piece
