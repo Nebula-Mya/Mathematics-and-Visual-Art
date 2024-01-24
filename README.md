@@ -163,3 +163,13 @@
 > picked 4 seeds for final piece
 >
 > made final piece (A Lone Branch), with vertical, horizontal, and seperated versions
+>
+
+## 1/22/2024
+16:00 - 16:30
+> took pictures for next pieces
+>
+
+## 1/24/2024
+12:50 - ???
+> edited pictures
