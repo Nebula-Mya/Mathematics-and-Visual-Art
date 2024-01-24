@@ -1,0 +1,161 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 10000 10000
+%%Title: ???
+%%Creator: Mya Macke
+
+% quick false and true
+/t true def
+/f false def
+
+% variables
+    % number of iterations
+    /Order 1 def
+
+    % rando settings
+    /AngleRando? f def
+    /LengthRando? f def
+    /ColorRando? f def
+    /TickRando? f def
+    /SetSeed? f def
+    /Seed? 0 def
+
+    % scaling factor
+    /ScaleFactor 0.5 def
+    /UniformScale 1 def
+
+    % turning angle
+    /Theta 30 def
+    /ThetaVariance 5 def
+
+    % line length
+    /Length 10 def
+    /LengthVariance 5 def
+    /Width 1.5 def
+
+    % color
+    /Red 0 def
+    /Blue 0 def
+    /Green 0 def
+
+    % starting point
+    /XX 9000 def
+    /YY 5000 def
+    /InitialAngle 180 def
+
+% custom functions
+    % scaling
+    /Scale {//ScaleFactor dup scale} bind def
+
+    % set seed
+    SetSeed? {
+        Seed? srand
+        /TickRando? false def
+    } if
+    TickRando? {
+        realtime srand
+    } if
+
+    % angle
+    /Angle [
+        AngleRando? {
+            {rand //ThetaVariance 2 mul 1 add mod //ThetaVariance sub //Theta add} 
+            aload pop
+        } {
+            {//Theta}
+            aload pop
+        } ifelse
+    ] cvx bind def
+
+    % percentage (operator)
+    /Chance {
+        rand 100 mod exch lt
+    } bind def
+
+    % color variance
+    /CVar {
+        rand 151 mod 1000 div .075 sub add
+    } bind def
+
+    % set color
+    /RGB [
+        ColorRando? {
+            {//Red CVar //Green CVar //Blue CVar setrgbcolor} 
+            aload pop
+        } {
+            {//Red //Green //Blue setrgbcolor}
+            aload pop
+        } ifelse
+    ] cvx bind def
+
+    % length variance
+    /LVar [
+        LengthRando? {
+            {rand //LengthVariance 2 mult 1 add mod //LengthVariance sub add} aload pop
+        } if
+    ] cvx bind def
+
+    % decrement by 1
+    /decr {1 sub} bind def
+
+    % make n copies on top of stack
+    /ndup {{dup} repeat} bind def
+
+    % branching
+    /¿ {currentpoint stroke moveto gsave} bind def
+    /? {stroke grestore} bind def
+
+    % rotations
+    /+ {Angle rotate} bind def
+    /- {Angle neg rotate} bind def
+    /+or- {50 Chance {+} {-} ifelse} def
+    /s+ {Angle 2 div rotate} bind def
+    /s- {Angle 2 div neg rotate} bind def
+    /s+or- {50 Chance {s+} {s-} ifelse} def
+
+    % # of fs
+    /nF {{F} repeat} bind def
+
+% algorithm
+    % forward line
+    /F {
+        Scale
+        RGB
+        //Length LVar 0 rlineto
+        pop
+    } bind def
+
+    % equation ??? -> ???
+    /??? {
+        dup 0 ne {
+            decr 1 ndup
+            ???
+        } if pop
+    } bind def
+
+    % axiom -> ???
+    /Start {
+        //InitialAngle rotate
+        1 ndup
+        ???
+        pop
+    } bind def
+
+% drawing
+    newpath
+        % line chars
+        1 setlinecap
+        1 setlinejoin
+        //Width setlinewidth
+
+        % move to start
+        //XX //YY moveto
+
+        % uniform scaling
+        //UniformScale dup scale
+
+        Order Start
+    stroke
+
+    showpage
+
+%%EOF

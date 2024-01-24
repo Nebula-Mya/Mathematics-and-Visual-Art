@@ -171,5 +171,9 @@
 >
 
 ## 1/24/2024
-12:50 - 13:30
+12:50 - 14:20
 > edited pictures
+>
+> imported pictures
+>
+> made framework for my l-systems
