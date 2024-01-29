@@ -182,7 +182,7 @@
 12:00 - 13:50
 > made l-system for "Growth"
 >
-14:10 - ???
+14:10 - 17:20
 > finetuned odds for "Growth"
 >
 > incorporated a depth variable and radiating color
