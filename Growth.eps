@@ -1,6 +1,6 @@
 %!PS-Adobe-3.0 EPSF-3.0
 %%BoundingBox: 0 0 10000 10000
-%%Title: ???
+%%Title: Growth (Structures of Nature)
 %%Creator: Mya Macke
 
 % quick false and true
@@ -9,19 +9,19 @@
 
 % variables
     % number of iterations
-    /Order 1 def
+    /Order 4 def
 
     % rando settings
-    /AngleRando? f def
-    /LengthRando? f def
-    /ColorRando? f def
+    /AngleRando? t def
+    /LengthRando? t def
+    /ColorRando? t def
     /TickRando? f def
     /SetSeed? f def
     /Seed? 0 def
 
     % scaling factor
-    /ScaleFactor 0.5 def
-    /UniformScale 1 def
+    /ScaleFactor 0.9 def
+    /UniformScale 10 def
 
     % turning angle
     /Theta 30 def
@@ -29,18 +29,18 @@
 
     % line length
     /Length 10 def
-    /LengthVariance 5 def
+    /LengthVariance 3 def
     /Width 1.5 def
 
     % color
-    /Red 0 def
-    /Blue 0 def
-    /Green 0 def
+    /Red 103 def
+    /Blue 66 def
+    /Green 21 def
 
     % starting point
-    /XX 9000 def
-    /YY 5000 def
-    /InitialAngle 180 def
+    /XX 2500 def
+    /YY 2500 def
+    /InitialAngle 60 def
 
 % custom functions
     % scaling
@@ -124,19 +124,58 @@
         pop
     } bind def
 
-    % equation ??? -> ???
-    /??? {
+    % leaf blob
+    /B {
+        Scale
+        % heart-ish shape with bezier curves
+        pop
+    } bind def
+
+    % equation T -> FT or F[+/-Y]T or Y (40:40:20)
+    /T {
         dup 0 ne {
-            decr 1 ndup
-            ???
+            decr
+            80 Chance {
+                50 Chance {
+                    2 ndup
+                    F T
+                } {
+                    3 ndup
+                    F ¿ +or- Y ? T
+                } ifelse
+            } {
+                1 ndup
+                Y
+            } ifelse
         } if pop
     } bind def
 
-    % axiom -> ???
+    % equation Y -> F[-L](scale)F[+L]Y
+    /Y {
+        dup 0 ne {
+            decr 5 ndup
+            F ¿ - L ? Scale F ¿ + L ? Y
+        } if pop
+    } bind def
+
+    % equation L -> BL or B[+/-(0.5 scale)L]L (70:30)
+    /L {
+        dup 0 ne {
+            70 Chance {
+                2 ndup
+                B L
+            } {
+                3 ndup
+                B ¿ +or- 0.5 Scale L ? L
+            } ifelse
+        } if pop
+    } bind def
+
+    % axiom -> T
     /Start {
         //InitialAngle rotate
         1 ndup
-        ???
+        T
         pop
     } bind def
 
