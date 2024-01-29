@@ -79,10 +79,10 @@
     % set color
     /RGB [
         ColorRando? {
-            {//Red CVar //Green CVar //Blue CVar setrgbcolor} 
+            {//Red 256 div CVar //Green 256 div CVar //Blue 256 div CVar setrgbcolor} 
             aload pop
         } {
-            {//Red //Green //Blue setrgbcolor}
+            {//Red 256 div//Green 256 div //Blue 256 div setrgbcolor}
             aload pop
         } ifelse
     ] cvx bind def
