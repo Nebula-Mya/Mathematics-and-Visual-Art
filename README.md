@@ -177,3 +177,7 @@
 > imported pictures
 >
 > made framework for my l-systems
+
+## 1/29/2024
+12:00 - ???
+> made l-system for "Growth"
