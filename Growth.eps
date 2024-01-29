@@ -128,6 +128,15 @@
     /B {
         Scale
         % heart-ish shape with bezier curves
+            6 3
+            6 12
+            0 9
+        curveto
+        0 -9 rmoveto
+            -6 3
+            -6 12
+            0 9
+        curveto
         pop
     } bind def
 
@@ -161,12 +170,13 @@
     % equation L -> BL or B[+/-(0.5 scale)L]L (70:30)
     /L {
         dup 0 ne {
+            decr
             70 Chance {
                 2 ndup
                 B L
             } {
                 3 ndup
-                B ¿ +or- 0.5 Scale L ? L
+                B ¿ +or- 0.5 dup scale L ? L
             } ifelse
         } if pop
     } bind def
