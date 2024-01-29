@@ -36,6 +36,11 @@
     /Red 0 def
     /Blue 0 def
     /Green 0 def
+    /RadiatingColor? f def
+    /DRed 0 def
+    /DGreen 0 def
+    /DBlue 0 def
+    /ColorVariance 18 def
 
     % starting point
     /XX 9000 def
@@ -43,6 +48,9 @@
     /InitialAngle 180 def
 
 % custom functions
+    % set depth
+    /Depth 1 def
+    
     % scaling
     /Scale {//ScaleFactor dup scale} bind def
 
@@ -73,16 +81,40 @@
 
     % color variance
     /CVar {
-        rand 151 mod 1000 div .075 sub add
+        rand //ColorVariance 2 mul 1 add mod //ColorVariance sub 256 div add
     } bind def
 
     % set color
     /RGB [
+        /Clamp {dup 1 gt {pop 1} if} bind def
+        RadiatingColor? {
+            {
+                /FRed //Red DRed Depth mul sub def
+                /FGreen //Green DGreen Depth mul sub def
+                /FBlue //Blue DBlue Depth mul sub def
+            } aload pop
+        } {
+            {
+                /FRed //Red def
+                /FGreen //Green def
+                /FBlue //Blue def
+            } aload pop
+        } ifelse
         ColorRando? {
-            {//Red 256 div CVar //Green 256 div CVar //Blue 256 div CVar setrgbcolor} 
+            {
+                FRed 256 div CVar Clamp
+                FGreen 256 div CVar Clamp
+                FBlue 256 div CVar Clamp
+                setrgbcolor
+            } 
             aload pop
         } {
-            {//Red 256 div//Green 256 div //Blue 256 div setrgbcolor}
+            {
+                FRed 256 div Clamp
+                FGreen 256 div Clamp
+                FBlue 256 div Clamp
+                setrgbcolor
+            }
             aload pop
         } ifelse
     ] cvx bind def
@@ -95,7 +127,16 @@
     ] cvx bind def
 
     % decrement by 1
-    /decr {1 sub} bind def
+    /decr {
+        1 sub
+        /Depth Depth 1 add def
+    } bind def
+    
+    % pop and fix depth at the end of equations
+    /return {
+        pop
+        /Depth Depth 1 sub def
+    } bind def
 
     % make n copies on top of stack
     /ndup {{dup} repeat} bind def
@@ -129,7 +170,7 @@
         dup 0 ne {
             decr 1 ndup
             ???
-        } if pop
+        } if return
     } bind def
 
     % axiom -> ???

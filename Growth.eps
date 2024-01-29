@@ -1,5 +1,5 @@
 %!PS-Adobe-3.0 EPSF-3.0
-%%BoundingBox: 0 0 10000 10000
+%%BoundingBox: 0 0 15000 15000
 %%Title: Growth (Structures of Nature)
 %%Creator: Mya Macke
 
@@ -9,7 +9,7 @@
 
 % variables
     % number of iterations
-    /Order 10 def
+    /Order 20 def
 
     % rando settings
     /AngleRando? t def
@@ -21,7 +21,8 @@
 
     % scaling factor
     /ScaleFactor 0.8 def
-    /UniformScale 100 def
+    /UniformScale 200 def
+    /LeefScaleFactor 0.6 def
 
     % turning angle
     /Theta 45 def
@@ -33,21 +34,32 @@
     /Width 1.5 def
 
     % color
-    /Red 93 def
-    /Blue 66 def
-    /Green 111 def
+    /Red 90 def
+    /Green 86 def
+    /Blue 21 def
+    /RadiatingColor? f def
+    /DRed 0.1 def
+    /DGreen 0.5 def
+    /DBlue 0 def
+    /ColorVariance 18 def
 
     % starting point
-    /XX 2500 def
+    /XX 4000 def
     /YY 2500 def
     /InitialAngle 60 def
 
     % percentages
-    
+    /TrunkEnd 20 def
+    /TrunkBranch 60 def
+    /LeefBranch 15 def
 
 % custom functions
+    % set depth
+    /Depth 1 def
+
     % scaling
     /Scale {//ScaleFactor dup scale} bind def
+    /LeefScale {//LeefScaleFactor dup scale} bind def
 
     % set seed
     SetSeed? {
@@ -76,16 +88,40 @@
 
     % color variance
     /CVar {
-        rand 151 mod 1000 div .075 sub add
+        rand //ColorVariance 2 mul 1 add mod //ColorVariance sub 256 div add
     } bind def
 
     % set color
     /RGB [
+        /Clamp {dup 1 gt {pop 1} if} bind def
+        RadiatingColor? {
+            {
+                /FRed //Red DRed Depth mul sub def
+                /FGreen //Green DGreen Depth mul sub def
+                /FBlue //Blue DBlue Depth mul sub def
+            } aload pop
+        } {
+            {
+                /FRed //Red def
+                /FGreen //Green def
+                /FBlue //Blue def
+            } aload pop
+        } ifelse
         ColorRando? {
-            {//Red 256 div CVar //Green 256 div CVar //Blue 256 div CVar setrgbcolor} 
+            {
+                FRed 256 div CVar Clamp
+                FGreen 256 div CVar Clamp
+                FBlue 256 div CVar Clamp
+                setrgbcolor
+            } 
             aload pop
         } {
-            {//Red 256 div //Green 256 div //Blue 256 div setrgbcolor}
+            {
+                FRed 256 div Clamp
+                FGreen 256 div Clamp
+                FBlue 256 div Clamp
+                setrgbcolor
+            }
             aload pop
         } ifelse
     ] cvx bind def
@@ -98,7 +134,16 @@
     ] cvx bind def
 
     % decrement by 1
-    /decr {1 sub} bind def
+    /decr {
+        1 sub
+        /Depth Depth 1 add def
+    } bind def
+    
+    % pop and fix depth at the end of equations
+    /return {
+        pop
+        /Depth Depth 1 sub def
+    } bind def
 
     % make n copies on top of stack
     /ndup {{dup} repeat} bind def
@@ -127,6 +172,13 @@
         //Length LVar 0 rlineto
         pop
     } bind def
+    /sF {
+        Scale
+        RGB
+        s+ s-
+        //Length LVar 2 div 0 rlineto
+        pop
+    } bind def
 
     % leaf blob
     /B {
@@ -138,61 +190,61 @@
         currentpoint
         newpath
         moveto
-            6 3
-            6 12
-            0 9
+            3 6
+            12 6
+            9 0
         rcurveto
-        0 -9 rmoveto
-            -6 3
-            -6 12
-            0 9
+        -9 0 rmoveto
+            3 -6
+            12 -6
+            9 0
         rcurveto
         closepath
         fill
         grestore
-        0 9 rmoveto
+        9 0 rmoveto
         pop
     } bind def
 
-    % equation T -> FT or F[+/-Y]T or Y (40:40:20)
+    % equation T -> FT or F[+/-Y]T or Y
     /T {
         dup 0 ne {
             decr
-            80 Chance {
-                50 Chance {
-                    2 ndup
-                    F T
-                } {
+            100 //TrunkEnd sub Chance {
+                100 //TrunkEnd sub //TrunkBranch exch div 100 mul Chance {
                     3 ndup
                     F ¿ +or- Y ? T
+                } {
+                    2 ndup
+                    F T
                 } ifelse
             } {
                 1 ndup
                 Y
             } ifelse
-        } if pop
+        } if return
     } bind def
 
-    % equation Y -> F[-L](scale)F[+L]Y
+    % equation Y -> sF[-L]sF[+L]Y
     /Y {
         dup 0 ne {
             decr 5 ndup
-            F ¿ - L ? Scale F ¿ + L ? Y
-        } if pop
+            sF ¿ - L ? sF ¿ + L ? Y
+        } if return
     } bind def
 
-    % equation L -> BL or B[+/-(0.5 scale)L]L (70:30)
+    % equation L -> BL or B[+/-(0.5 scale)L]L
     /L {
         dup 0 ne {
             decr
-            70 Chance {
+            100 //LeefBranch sub Chance {
                 2 ndup
                 B L
             } {
                 3 ndup
-                B ¿ +or- 0.5 dup scale L ? L
+                B ¿ +or- LeefScale L ? L
             } ifelse
-        } if pop
+        } if return
     } bind def
 
     % axiom -> T

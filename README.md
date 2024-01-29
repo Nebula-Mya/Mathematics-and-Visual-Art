@@ -181,3 +181,9 @@
 ## 1/29/2024
 12:00 - 13:50
 > made l-system for "Growth"
+>
+14:10 - ???
+> finetuned odds for "Growth"
+>
+> incorporated a depth variable and radiating color
+>
