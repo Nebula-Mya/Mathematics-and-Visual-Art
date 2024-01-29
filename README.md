@@ -179,5 +179,5 @@
 > made framework for my l-systems
 
 ## 1/29/2024
-12:00 - ???
+12:00 - 13:50
 > made l-system for "Growth"

@@ -9,38 +9,41 @@
 
 % variables
     % number of iterations
-    /Order 4 def
+    /Order 10 def
 
     % rando settings
     /AngleRando? t def
     /LengthRando? t def
     /ColorRando? t def
-    /TickRando? f def
+    /TickRando? t def
     /SetSeed? f def
     /Seed? 0 def
 
     % scaling factor
-    /ScaleFactor 0.9 def
-    /UniformScale 10 def
+    /ScaleFactor 0.8 def
+    /UniformScale 100 def
 
     % turning angle
-    /Theta 30 def
-    /ThetaVariance 5 def
+    /Theta 45 def
+    /ThetaVariance 20 def
 
     % line length
-    /Length 10 def
+    /Length 15 def
     /LengthVariance 3 def
     /Width 1.5 def
 
     % color
-    /Red 103 def
+    /Red 93 def
     /Blue 66 def
-    /Green 21 def
+    /Green 111 def
 
     % starting point
     /XX 2500 def
     /YY 2500 def
     /InitialAngle 60 def
+
+    % percentages
+    
 
 % custom functions
     % scaling
@@ -79,10 +82,10 @@
     % set color
     /RGB [
         ColorRando? {
-            {//Red CVar //Green CVar //Blue CVar setrgbcolor} 
+            {//Red 256 div CVar //Green 256 div CVar //Blue 256 div CVar setrgbcolor} 
             aload pop
         } {
-            {//Red //Green //Blue setrgbcolor}
+            {//Red 256 div //Green 256 div //Blue 256 div setrgbcolor}
             aload pop
         } ifelse
     ] cvx bind def
@@ -120,6 +123,7 @@
     /F {
         Scale
         RGB
+        s+ s-
         //Length LVar 0 rlineto
         pop
     } bind def
@@ -127,16 +131,26 @@
     % leaf blob
     /B {
         Scale
+        RGB
+        s+ s-
         % heart-ish shape with bezier curves
+        gsave
+        currentpoint
+        newpath
+        moveto
             6 3
             6 12
             0 9
-        curveto
+        rcurveto
         0 -9 rmoveto
             -6 3
             -6 12
             0 9
-        curveto
+        rcurveto
+        closepath
+        fill
+        grestore
+        0 9 rmoveto
         pop
     } bind def
 
