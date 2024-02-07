@@ -186,4 +186,7 @@
 > finetuned odds for "Growth"
 >
 > incorporated a depth variable and radiating color
->
+
+## 2/7/2024
+2:40
+> giving up on radiating color for now, ill work on that after this piece
