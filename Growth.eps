@@ -1,5 +1,5 @@
 %!PS-Adobe-3.0 EPSF-3.0
-%%BoundingBox: 0 0 15000 15000
+%%BoundingBox: 0 0 18000 18000
 %%Title: Growth (Structures of Nature)
 %%Creator: Mya Macke
 
@@ -9,7 +9,7 @@
 
 % variables
     % number of iterations
-    /Order 12 def
+    /Order 14 def
 
     % rando settings
     /AngleRando? t def
@@ -17,8 +17,8 @@
     /ColorRando? t def
     /TickRando? f def
     /SetSeed? t def
-    /Seed? 5 def
-    % order 12 seeds: 5
+    /Seed? 30 def
+    % order 14 seeds: 2(small), 4(small), 6, 7(big), 8, 10, 17, 19(small), 21, 24, 25
 
     % scaling factor
     /ScaleFactor 0.8 def
@@ -45,7 +45,7 @@
     /ColorVariance 18 def
 
     % starting point
-    /XX 4000 def
+    /XX 6000 def
     /YY 1000 def
     /InitialAngle 60 def
 
@@ -180,6 +180,12 @@
         //Length LVar 2 div 0 rlineto
         pop
     } bind def
+    /ssF {
+        RGB
+        s+ s-
+        //Length LVar 5 div 0 rlineto
+        pop
+    } bind def
 
     % leaf blob
     /B {
@@ -191,19 +197,19 @@
         currentpoint
         newpath
         moveto
-            3 6
-            12 6
-            9 0
+            2 4
+            8 4
+            6 0
         rcurveto
-        -9 0 rmoveto
-            3 -6
-            12 -6
-            9 0
+        -6 0 rmoveto
+            2 -4
+            8 -4
+            6 0
         rcurveto
         closepath
         fill
         grestore
-        9 0 rlineto
+        6 0 rlineto
         pop
     } bind def
 
@@ -226,11 +232,11 @@
         } if return
     } bind def
 
-    % equation Y -> sF[-L]sF[+L]Y
+    % equation Y -> sF[-L]0.2F[+L]Y
     /Y {
         dup 0 ne {
             decr 5 ndup
-            sF ¿ - L ? sF ¿ + L ? Y
+            sF ¿ - L ? ssF ¿ + L ? Y
         } if return
     } bind def
 

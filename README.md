@@ -177,6 +177,7 @@
 > imported pictures
 >
 > made framework for my l-systems
+>
 
 ## 1/29/2024
 12:00 - 13:50
@@ -186,7 +187,15 @@
 > finetuned odds for "Growth"
 >
 > incorporated a depth variable and radiating color
+>
 
 ## 2/7/2024
 2:40
-> giving up on radiating color for now, ill work on that after this piece
+> giving up on radiating color for now, ill work on that after "Growth"
+>
+
+4:00 - 4:20
+> selecting nice seeds for "Growth"
+>
+> changed algorithm slightly to improve accuracy to original plant
+>
